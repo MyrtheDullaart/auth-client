@@ -33,8 +33,6 @@ export default function App() {
       const data = await response.json()
 
       setUserData(data.user)
-
-      console.log(userData)
     }
 
     addNewUser()
@@ -105,17 +103,17 @@ export default function App() {
         <p>Register:</p>
 
         <label htmlFor="username">Username</label>
-        <input type="text" name='username' required onChange={handleChange} />
+        <input type="text" name='username' required onChange={handleChange} value={newUserData.username} />
 
         <label htmlFor="password">Password</label>
-        <input type="text" name='password' required onChange={handleChange}/>
+        <input type="text" name='password' required onChange={handleChange} value={newUserData.password}/>
 
         <button>Submit</button>
       </form>
       <div className='user-data'>
         {userData && 
           <>
-            <p>userName: {userData.username}</p>
+            <p>username: {userData.username}</p>
             <p>Password hash: {userData.password}</p>
           </>
         }
@@ -125,10 +123,10 @@ export default function App() {
         <p>Log in:</p>
 
         <label htmlFor="username">Username</label>
-        <input type="text" name='username' required onChange={handleLoginChange} />
+        <input type="text" name='username' required onChange={handleLoginChange} value={loginData.username}/>
 
         <label htmlFor="password">Password</label>
-        <input type="text" name='password' required onChange={handleLoginChange}/>
+        <input type="text" name='password' required onChange={handleLoginChange} value={loginData.password}/>
 
         <button>Submit</button>
       </form>
