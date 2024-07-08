@@ -29,8 +29,8 @@ export default function App() {
         },
       }
 
-        const response = await fetch('http://localhost:4000/register', options)
-        const data = await response.json()
+      const response = await fetch('http://localhost:4000/register', options)
+      const data = await response.json()
 
       setUserData(data.user)
 
@@ -75,18 +75,20 @@ export default function App() {
         },
       }
 
-        const response = await fetch('http://localhost:4000/login', options)
-        const data = await response.json()
+      const response = await fetch('http://localhost:4000/login', options)
+      const data = await response.json()
 
-        if(data.message) {
-          setLoginError(data)
-          setLoginToken(null)
-        }
+      if(data.message) {
+        setLoginError(data)
+        setLoginToken(null)
+      }
 
-        if(data.token){
-          setLoginToken(data)
-          setLoginError(null)
-        }
+      if(data.token){
+        setLoginToken(data)
+        setLoginError(null)
+
+        localStorage.setItem("jwt", data.token)
+      }
     }
 
     loginUser()

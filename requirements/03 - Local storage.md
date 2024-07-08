@@ -22,16 +22,20 @@ The important methods to know are:
 The user has logged in and now has a valid bearer token saved in local storage. Which header do we need to put this token into when requesting a protected resource from a server?
 
 Answer:
+Into the authorization header
 
 ### Q2
 
 Imagine the below code gets profile information for a user by ID but requires a valid token to access. What would you add to include the token from local storage?
 
 ```js
+const token = localstorage.getItem("jwt")
+
 fetch('http://localhost:4000/user-profile/1', {
   method: 'GET',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': token
   }
 })
 ```
